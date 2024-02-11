@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AboutUs",
+};
+
 export default function AboutUsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
