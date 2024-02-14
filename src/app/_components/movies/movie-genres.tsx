@@ -27,7 +27,7 @@ export default function MovieGenres({ genres }: { genres: any }) {
     <div className={style.container}>
       <h4>장르</h4>
       {genres.map((genre: any) => (
-        <span>{genreObj[genre.id]}</span>
+        <span key={genre.id}>{genreObj[genre.id]}</span>
       ))}
     </div>
   );
