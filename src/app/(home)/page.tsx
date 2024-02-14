@@ -7,8 +7,8 @@ export const metadata = {
 
 export const URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
 
+// 영화 목록 불러오는 함수 (서버사이드렌더링)
 async function getMovies() {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
   const response = await fetch(URL);
   return response.json();
 }
