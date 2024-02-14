@@ -1,0 +1,25 @@
+.container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.container h4 {
+    margin-top: 24px;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+.link {
+    color: gray;
+    font-size: 16px;
+}
+
+
+.similarList {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
