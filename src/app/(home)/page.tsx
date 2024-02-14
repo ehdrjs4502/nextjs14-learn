@@ -1,3 +1,4 @@
+import { API_URL } from "@/constans";
 import Movie from "../_components/movies/movie";
 import style from "../styles/home.module.css";
 
@@ -5,11 +6,9 @@ export const metadata = {
   title: "Home",
 };
 
-export const URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
-
 // 영화 목록 불러오는 함수 (서버사이드렌더링)
 async function getMovies() {
-  const response = await fetch(URL);
+  const response = await fetch(API_URL);
   return response.json();
 }
 

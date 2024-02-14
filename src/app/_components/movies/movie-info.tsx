@@ -1,10 +1,10 @@
-import { URL } from "../../(home)/page";
+import { API_URL } from "@/constans";
 import style from "../../styles/movies/movie-info.module.css";
 
 export async function getMovie(id: string) {
   //   await new Promise((resolve) => setTimeout(resolve, 3000));
   // throw new Error("something broke...");
-  const response = await fetch(`${URL}/${id}`);
+  const response = await fetch(`${API_URL}/${id}`);
   return response.json();
 }
 

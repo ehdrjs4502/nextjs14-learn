@@ -1,9 +1,9 @@
-import { URL } from "../../(home)/page";
+import { API_URL } from "@/constans";
 import style from "../../styles/movies/movie-videos.module.css";
 
 async function getVideos(id: string) {
   // await new Promise((resolve) => setTimeout(resolve, 4000));
-  const response = await fetch(`${URL}/${id}/videos`);
+  const response = await fetch(`${API_URL}/${id}/videos`);
 
   return response.json();
 }

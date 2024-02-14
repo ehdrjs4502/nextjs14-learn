@@ -6,6 +6,7 @@ interface IParameters {
   params: { id: string };
 }
 
+// 동적 메타데이터
 export async function generateMetadata({ params: { id } }: IParameters) {
   const movie = await getMovie(id);
   return {
