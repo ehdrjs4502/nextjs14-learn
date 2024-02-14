@@ -18,6 +18,7 @@
 /* 스크롤바의 폭 너비 */
 .creditList::-webkit-scrollbar {
     width: 20px;
+    height: 12px;
 }
 
 .creditList::-webkit-scrollbar-thumb {

@@ -1,0 +1,17 @@
+.container {
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.container h4 {
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+.container span {
+    background-color: rgb(94, 94, 94);
+    margin-right: 8px;
+    padding: 4px 10px 4px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+}

@@ -1,6 +1,7 @@
 import { getMovie } from "@/app/api/movie-api";
 import style from "../../styles/movies/movie-info.module.css";
 import Link from "next/link";
+import MovieGenres from "./movie-genres";
 
 export default async function MovieInfo({ id }: { id: string }) {
   const movie = await getMovie(id);
@@ -14,10 +15,13 @@ export default async function MovieInfo({ id }: { id: string }) {
         </span>
         <h3>⭐️ {movie.vote_average.toFixed(1)}</h3>
         <p>{movie.overview}</p>
-        <a href={movie.homepage} target={"_blank"}>
-          공식 홈페이지 &rarr;
-        </a>
-        <Link href={`/movies/${id}/similar`}>관련 영화 &rarr;</Link>
+        <MovieGenres genres={movie.genres} />
+        <div className={style.links}>
+          <a href={movie.homepage} target={"_blank"}>
+            공식 홈페이지 &rarr;
+          </a>
+          <Link href={`/movies/${id}/similar`}>관련 영화 &rarr;</Link>
+        </div>
       </div>
     </div>
   );
