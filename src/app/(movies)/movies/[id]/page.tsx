@@ -1,5 +1,4 @@
 import MovieInfo from "@/app/_components/movies/movieInfo";
-import { URL } from "../../../(home)/page";
 import MovieVideos from "@/app/_components/movies/movieVideos";
 import { Suspense } from "react";
 

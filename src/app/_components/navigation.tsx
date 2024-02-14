@@ -1,8 +1,9 @@
 import Link from "next/link";
+import style from "../styles/navigation.module.css";
 
-export default function NavBar() {
+export default function Navigation() {
   return (
-    <nav>
+    <nav className={style.nav}>
       <ul>
         <li>
           <Link href="/">Home</Link>

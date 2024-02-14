@@ -1,5 +1,6 @@
+import "./styles/globals.css";
 import { Metadata } from "next";
-import NavBar from "./_components/NavBar";
+import Navigation from "./_components/navigation";
 
 export const metadata: Metadata = {
   title: {
@@ -13,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <NavBar />
+        <Navigation />
         {children}
       </body>
     </html>
