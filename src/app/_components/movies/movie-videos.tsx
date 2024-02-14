@@ -10,19 +10,16 @@ async function getVideos(id: string) {
 
 export default async function MovieVideos({ id }: { id: string }) {
   const videos = await getVideos(id);
-
+  const trailer = videos.filter((video: any) => video.type == "Trailer")[0]; // 예고편만 변수에 저장
   return (
     <div className={style.container}>
-      <h4>관련 영상</h4>
-      {videos.map((video: any) => (
-        <iframe
-          key={video.id}
-          src={`https://youtube.com/embed/${video.key}`}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title={video.name}
-        />
-      ))}
+      <iframe
+        key={trailer.id}
+        src={`https://youtube.com/embed/${trailer.key}`}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        title={trailer.name}
+      />
     </div>
   );
 }

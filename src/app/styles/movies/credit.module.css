@@ -1,0 +1,26 @@
+.container {
+    margin-right: 18px;
+    margin-bottom: 10px;
+}
+
+.container img {
+    width: 140px;
+    border-radius: 14px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+}
+
+.info span {
+    white-space: normal;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.info span:last-of-type {
+    font-size: 14px;
+    color: gray;
+}

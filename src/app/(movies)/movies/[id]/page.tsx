@@ -1,3 +1,4 @@
+import MovieCreadits from "@/app/_components/movies/movie-credits";
 import MovieInfo, { getMovie } from "@/app/_components/movies/movie-info";
 import MovieVideos from "@/app/_components/movies/movie-videos";
 import { Suspense } from "react";
@@ -19,6 +20,9 @@ export default async function MovieDetail({ params: { id } }: IParameters) {
     <div>
       <Suspense fallback={<h1>영화 정보 불러오는 중...</h1>}>
         <MovieInfo id={id} />
+      </Suspense>
+      <Suspense>
+        <MovieCreadits id={id} />
       </Suspense>
       <Suspense fallback={<h1>영화 영상 불러오는 중...</h1>}>
         <MovieVideos id={id} />

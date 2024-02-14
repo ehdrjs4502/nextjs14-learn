@@ -1,0 +1,28 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.credit {
+    display: flex;
+    overflow: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+/* 스크롤바의 폭 너비 */
+.credit::-webkit-scrollbar {
+    width: 20px;
+}
+
+.credit::-webkit-scrollbar-thumb {
+    background: rgb(166, 166, 166);
+    /* 스크롤바 색상 */
+    border-radius: 10px;
+    /* 스크롤바 둥근 테두리 */
+}
+
+.credit::-webkit-scrollbar-track {
+    background: rgba(230, 230, 230, 0.1);
+    /*스크롤바 뒷 배경 색상*/
+}
