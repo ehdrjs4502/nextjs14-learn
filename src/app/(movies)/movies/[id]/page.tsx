@@ -1,5 +1,5 @@
-import MovieInfo from "@/app/_components/movies/movieInfo";
-import MovieVideos from "@/app/_components/movies/movieVideos";
+import MovieInfo from "@/app/_components/movies/movie-info";
+import MovieVideos from "@/app/_components/movies/movie-videos";
 import { Suspense } from "react";
 
 export default async function MovieDetail({ params }: { params: { id: string } }) {
