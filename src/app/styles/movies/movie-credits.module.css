@@ -1,9 +1,14 @@
 .container {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
 }
 
-.credit {
+.container h4 {
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.creditList {
     display: flex;
     overflow: auto;
     overflow-y: hidden;
@@ -11,18 +16,18 @@
 }
 
 /* 스크롤바의 폭 너비 */
-.credit::-webkit-scrollbar {
+.creditList::-webkit-scrollbar {
     width: 20px;
 }
 
-.credit::-webkit-scrollbar-thumb {
+.creditList::-webkit-scrollbar-thumb {
     background: rgb(166, 166, 166);
     /* 스크롤바 색상 */
     border-radius: 10px;
     /* 스크롤바 둥근 테두리 */
 }
 
-.credit::-webkit-scrollbar-track {
+.creditList::-webkit-scrollbar-track {
     background: rgba(230, 230, 230, 0.1);
     /*스크롤바 뒷 배경 색상*/
 }

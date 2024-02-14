@@ -13,13 +13,16 @@ export default async function MovieVideos({ id }: { id: string }) {
   const trailer = videos.filter((video: any) => video.type == "Trailer")[0]; // 예고편만 변수에 저장
   return (
     <div className={style.container}>
-      <iframe
-        key={trailer.id}
-        src={`https://youtube.com/embed/${trailer.key}`}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        title={trailer.name}
-      />
+      <h4>공식 트레일러</h4>
+      <div className={style.video}>
+        <iframe
+          key={trailer.id}
+          src={`https://youtube.com/embed/${trailer.key}`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title={trailer.name}
+        />
+      </div>
     </div>
   );
 }

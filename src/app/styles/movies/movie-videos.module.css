@@ -1,13 +1,24 @@
 .container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.container h4 {
+    margin-top: 48px;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.video {
     position: relative;
-    width: 60vw;
+    width: 70vw;
     max-width: 100%;
     height: auto;
     padding-bottom: 33.75vw;
     margin: 0 auto;
 }
 
-.container iframe {
+.video iframe {
     position: absolute;
     top: 0;
     left: 0;

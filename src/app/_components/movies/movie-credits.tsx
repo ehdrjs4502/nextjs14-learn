@@ -14,7 +14,7 @@ export default async function MovieCreadits({ id }: { id: string }) {
   return (
     <div className={style.container}>
       <h4>등장인물</h4>
-      <div className={style.credit}>
+      <div className={style.creditList}>
         {credits.map((credit: any) => (
           <Credit key={credit.id} name={credit.name} profile_path={credit.profile_path} character={credit.character} />
         ))}
