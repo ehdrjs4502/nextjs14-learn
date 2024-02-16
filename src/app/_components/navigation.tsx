@@ -9,7 +9,7 @@ export default function Navigation() {
           <Link href="/">Home</Link>
         </li>
         <li>
-          <Link href="/about-us">AboutUs</Link>
+          <Link href="/user">User</Link>
         </li>
       </ul>
     </nav>
