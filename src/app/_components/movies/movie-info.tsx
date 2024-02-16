@@ -2,6 +2,7 @@ import { getMovie } from "@/app/api/movie-api";
 import style from "../../styles/movies/movie-info.module.css";
 import Link from "next/link";
 import MovieGenres from "./movie-genres";
+import LikeButton from "../like-button";
 
 export default async function MovieInfo({ id }: { id: string }) {
   const movie = await getMovie(id);
@@ -22,6 +23,7 @@ export default async function MovieInfo({ id }: { id: string }) {
           </a>
           <Link href={`/movies/${id}/similar`}>관련 영화 &rarr;</Link>
         </div>
+        <LikeButton movieID={id} title={movie.title} postURL={movie.poster_path} />
       </div>
     </div>
   );
