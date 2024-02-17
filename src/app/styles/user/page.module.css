@@ -1,0 +1,10 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.container h4 {
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-size: 18px;
+}

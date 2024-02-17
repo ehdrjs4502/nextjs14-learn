@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Movie from "../movies/movie";
-import style from "../../styles/home.module.css";
+import style from "../../styles/user/favorite-movies.module.css";
 import { getFavoriteMovies } from "@/app/api/get-favorite-movies";
 
 export default function FavoriteMovies() {
