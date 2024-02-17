@@ -1,7 +1,7 @@
 import MovieCreadits from "@/app/_components/movies/movie-credits";
 import MovieInfo from "@/app/_components/movies/movie-info";
 import MovieVideos from "@/app/_components/movies/movie-videos";
-import { getMovie } from "@/app/api/movie-api";
+import { getMovie } from "@/app/api/get-movie";
 import { Suspense } from "react";
 
 interface IParameters {

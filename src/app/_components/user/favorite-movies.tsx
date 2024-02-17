@@ -4,37 +4,32 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Movie from "../movies/movie";
 import style from "../../styles/home.module.css";
+import { getFavoriteMovies } from "@/app/api/get-favorite-movies";
 
 export default function FavoriteMovies() {
   const [movies, setMovies] = useState([]);
   const router = useRouter();
 
-  const getFavoriteMovies = async (id: any) => {
-    try {
-      const response = await fetch(`http://localhost:3001/favorites/${id}`);
-      console.log(id);
-      const data = await response.json();
-      console.log(data);
-      setMovies(data);
-    } catch (error) {
-      console.error("Error occurred:", error);
-    }
+  const fetchData = async (id: string) => {
+    const favoriteMovies = await getFavoriteMovies(id);
+    setMovies(favoriteMovies);
   };
+
   useEffect(() => {
     const id = localStorage.getItem("id");
-    if (id === null) {
+    if (!id) {
       alert("로그인 후 이용 가능합니다.");
       router.push("/login");
-    } else {
-      console.log("ㅎㅇ");
-      getFavoriteMovies(id);
+      return;
     }
+
+    fetchData(id);
   }, []);
 
   return (
     <div className={style.container}>
       {movies.map((movie: any) => (
-        <Movie key={movie.movie_id} id={movie.movie_id} poster_path={movie.post_url} title={movie.movie_title} />
+        <Movie key={movie.id} id={movie.movie_id} poster_path={movie.post_url} title={movie.movie_title} />
       ))}
     </div>
   );
