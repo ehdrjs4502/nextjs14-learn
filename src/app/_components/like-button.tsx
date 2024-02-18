@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getFavoriteMovies } from "../api/get-favorite-movies";
 import style from "../styles/like-button.module.css";
 import { addFavoriteMovie } from "../api/add-favorite-movie";
+import { delFavoriteMovie } from "../api/del-favorite-movie";
 
 interface ILikeButtonProps {
   movieID: string;
@@ -17,8 +18,9 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
   const router = useRouter();
 
   const fetchData = async (id: any) => {
-    const favoriteMovies = await getFavoriteMovies(id);
-    setMovies(favoriteMovies);
+    const response = await getFavoriteMovies(id);
+    if (response.message === "Failed to fetch favorites") return;
+    setMovies(response);
   };
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
     return movies.some((movie: any) => movie.movie_id === movieID);
   };
 
-  const onClickLikeBtn = async () => {
+  const onClickBtn = async () => {
     const id = localStorage.getItem("id");
     if (!id) {
       alert("로그인 후 이용 가능합니다.");
@@ -49,16 +51,13 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
       userID: id,
       movieID,
     };
-
-    const method = isMovieIdExist() ? "DELETE" : "POST";
-
-    const response = await addFavoriteMovie(likeReqData);
+    const response = isMovieIdExist() ? await delFavoriteMovie(unLikeReqData) : await addFavoriteMovie(likeReqData);
     console.log(response);
     fetchData(id);
   };
   return (
     <div>
-      <button className={style.btn} onClick={onClickLikeBtn}>
+      <button className={style.btn} onClick={onClickBtn}>
         {isMovieIdExist() ? "❤️" : "🤍"}
       </button>
     </div>
