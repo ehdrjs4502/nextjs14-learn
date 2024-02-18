@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getFavoriteMovies } from "../api/get-favorite-movies";
 import style from "../styles/like-button.module.css";
+import { addFavoriteMovie } from "../api/add-favorite-movie";
 
 interface ILikeButtonProps {
   movieID: string;
@@ -37,32 +38,23 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
       return;
     }
 
-    try {
-      const likeReqData = {
-        userID: id,
-        movieID,
-        title,
-        postURL,
-      };
+    const likeReqData = {
+      userID: id,
+      movieID,
+      title,
+      postURL,
+    };
 
-      const unLikeReqData = {
-        userID: id,
-        movieID,
-      };
+    const unLikeReqData = {
+      userID: id,
+      movieID,
+    };
 
-      const method = isMovieIdExist() ? "DELETE" : "POST";
-      const response = await fetch("http://localhost:3001/favorites", {
-        method,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(isMovieIdExist() ? unLikeReqData : likeReqData),
-      });
-      const data = await response.json();
-      fetchData(id);
-    } catch (error) {
-      console.error("Error occurred:", error);
-    }
+    const method = isMovieIdExist() ? "DELETE" : "POST";
+
+    const response = await addFavoriteMovie(likeReqData);
+    console.log(response);
+    fetchData(id);
   };
   return (
     <div>

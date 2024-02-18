@@ -20,6 +20,7 @@ export default function Login() {
   };
 
   const handleSubmit = async (e: any) => {
+    console.log("클릭");
     e.preventDefault();
     try {
       const response = await fetch("http://localhost:3001/login", {
@@ -35,6 +36,7 @@ export default function Login() {
         localStorage.clear();
         localStorage.setItem("id", data.id);
         router.push("/"); // 로그인 성공 시 홈페이지로 이동
+        console.log(data);
       } else {
         console.error(data); // 로그인 실패 메시지 출력
         setIsInvalid(true);
