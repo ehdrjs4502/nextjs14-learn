@@ -1,5 +1,6 @@
 "use client";
 
+import { SERVER_URL } from "@/constans";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -23,7 +24,7 @@ export default function Login() {
     console.log("클릭");
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/login", {
+      const response = await fetch(`${SERVER_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
