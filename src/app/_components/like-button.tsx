@@ -17,17 +17,20 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
   const [movies, setMovies] = useState([]);
   const router = useRouter();
 
+  // 영화 찜 목록 불러오기
   const fetchData = async (id: any) => {
     const response = await getFavoriteMovies(id);
     if (response.message === "Failed to fetch favorites") return;
     setMovies(response);
   };
 
+  // 첫 마운트 되면 로컬스토리지에 있는 id로 찜 목록 불러오기
   useEffect(() => {
     const id = localStorage.getItem("id");
     fetchData(id);
   }, []);
 
+  // 영화가 찜 영화 목록에 있는 지 판단
   const isMovieIdExist = () => {
     return movies.some((movie: any) => movie.movie_id === movieID);
   };
@@ -51,6 +54,8 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
       userID: id,
       movieID,
     };
+
+    // 영화가 이미 찜 목록에 있으면 삭제 api 실행, 아니면 추가 api 실행
     const response = isMovieIdExist() ? await delFavoriteMovie(unLikeReqData) : await addFavoriteMovie(likeReqData);
     console.log(response);
     fetchData(id);
