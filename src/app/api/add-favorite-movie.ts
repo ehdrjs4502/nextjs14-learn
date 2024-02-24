@@ -1,7 +1,7 @@
 "use server";
 
 import { SERVER_URL } from "@/constans";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export const addFavoriteMovie = async (data: any) => {
   const response = await fetch(`${SERVER_URL}/favorites`, {
@@ -11,6 +11,7 @@ export const addFavoriteMovie = async (data: any) => {
     },
     body: JSON.stringify(data),
   });
-  revalidateTag("favorites");
+  // revalidateTag("favorites");
+  revalidatePath("/user/[id]", "page"); // 해당 경로에 data를 업데이트
   return response.json();
 };
