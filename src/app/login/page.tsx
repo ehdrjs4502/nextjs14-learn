@@ -1,5 +1,6 @@
 "use client";
 
+import useUserInfo from "@/_hooks/useUserInfo";
 import { SERVER_URL } from "@/constans";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -10,6 +11,7 @@ export default function Login() {
     id: "",
     password: "",
   });
+  const { userInfo, setUserInfo } = useUserInfo(); // zustand 라이브러리 사용
   const [isInvalid, setIsInvalid] = useState(false);
 
   const handleChange = (e: any) => {
@@ -21,7 +23,6 @@ export default function Login() {
   };
 
   const handleSubmit = async (e: any) => {
-    console.log("클릭");
     e.preventDefault();
     try {
       const response = await fetch(`${SERVER_URL}/login`, {
@@ -34,16 +35,15 @@ export default function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.clear();
-        localStorage.setItem("id", data.id);
-        router.push("/"); // 로그인 성공 시 홈페이지로 이동
-        console.log(data);
+        setUserInfo(data.id);
+        // router.push("/"); // 로그인 성공 시 홈페이지로 이동
       } else {
         console.error(data); // 로그인 실패 메시지 출력
         setIsInvalid(true);
       }
     } catch (error) {
       console.error("Error occurred:", error);
+      alert("에러가 발생했습니다.");
     }
   };
 
@@ -70,6 +70,7 @@ export default function Login() {
         <button type="submit">Login</button>
         {isInvalid && <span>유효하지 않은 ID입니다.</span>}
       </form>
+      <h2>{userInfo.id}</h2>
     </div>
   );
 }

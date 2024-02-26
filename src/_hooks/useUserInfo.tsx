@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 interface UserInfo {
-  nickName: string;
+  id: string;
 }
 
 interface UserState {
@@ -10,7 +10,7 @@ interface UserState {
   deleteUserInfo: () => void;
 }
 
-const initialValue = { nickName: "" };
+const initialValue = { id: "" };
 
 const useUserInfo = create<UserState>((set) => ({
   userInfo: initialValue,
@@ -21,3 +21,5 @@ const useUserInfo = create<UserState>((set) => ({
     set({ userInfo: initialValue });
   },
 }));
+
+export default useUserInfo;
