@@ -1,7 +1,6 @@
 "use client";
 
 import useUserInfo from "@/_hooks/useUserInfo";
-import { SERVER_URL } from "@/constans";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { login } from "../_api/login";
@@ -12,7 +11,7 @@ export default function Login() {
     id: "",
     password: "",
   });
-  const { userInfo, setUserInfo } = useUserInfo(); // zustand 라이브러리 사용
+  const { setUserInfo } = useUserInfo(); // zustand 라이브러리 사용
   const [isInvalid, setIsInvalid] = useState(false);
 
   const handleChange = (e: any) => {
