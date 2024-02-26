@@ -4,6 +4,7 @@ import useUserInfo from "@/_hooks/useUserInfo";
 import { SERVER_URL } from "@/constans";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { login } from "../_api/login";
 
 export default function Login() {
   const router = useRouter();
@@ -25,20 +26,12 @@ export default function Login() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${SERVER_URL}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        setUserInfo(data.id);
-        // router.push("/"); // 로그인 성공 시 홈페이지로 이동
+      const response = await login(formData);
+      if (response) {
+        setUserInfo(response);
+        router.push("/"); // 로그인 성공 시 홈페이지로 이동
       } else {
-        console.error(data); // 로그인 실패 메시지 출력
+        console.error(response); // 로그인 실패 메시지 출력
         setIsInvalid(true);
       }
     } catch (error) {
@@ -70,7 +63,6 @@ export default function Login() {
         <button type="submit">Login</button>
         {isInvalid && <span>유효하지 않은 ID입니다.</span>}
       </form>
-      <h2>{userInfo.id}</h2>
     </div>
   );
 }
