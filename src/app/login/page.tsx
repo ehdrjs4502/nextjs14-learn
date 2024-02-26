@@ -27,7 +27,7 @@ export default function Login() {
     try {
       const response = await login(formData);
       if (response) {
-        setUserInfo(response);
+        setUserInfo(response); // return 값 전역 상태인 userInfo 상태에 저장
         router.push("/"); // 로그인 성공 시 홈페이지로 이동
       } else {
         console.error(response); // 로그인 실패 메시지 출력
