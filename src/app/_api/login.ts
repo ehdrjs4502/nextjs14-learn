@@ -1,11 +1,11 @@
 import { SERVER_URL } from "@/constans";
 
-interface formData {
+interface FormData {
   id: string;
   password: string;
 }
 
-export async function login(formData: formData) {
+export async function login(formData: FormData) {
   const response = await fetch(`${SERVER_URL}/login`, {
     method: "POST",
     headers: {
