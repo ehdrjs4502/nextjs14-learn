@@ -1,5 +1,5 @@
 import Movie from "../movies/movie";
-import style from "@/app/styles/user/favorite-movies.module.css";
+import style from "@/app/_styles/user/favorite-movies.module.css";
 
 export default function FavoriteMovies({ movies }: any) {
   return (
