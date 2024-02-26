@@ -16,7 +16,6 @@ interface ILikeButtonProps {
 
 export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps) {
   const [movies, setMovies] = useState([]);
-  const [isLogin, setIsLogin] = useState(false);
   const [id, setId] = useState<string | null>(null);
   const router = useRouter();
 
@@ -29,8 +28,8 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
 
   useEffect(() => {
     let id = getIdFromLocalStorage("id");
-    if (id !== null) {
-      setIsLogin(true);
+    if (id) {
+      console.log("짠");
       setId(id); // id 상태 업데이트
       fetchData(id); // fetchData 함수 호출
     }
@@ -42,7 +41,7 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
   };
 
   const onClickBtn = async () => {
-    if (!isLogin) {
+    if (!id) {
       alert("로그인 후 이용 가능합니다.");
       router.push("/login");
       return;
