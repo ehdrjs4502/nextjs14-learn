@@ -2,15 +2,15 @@
 import Link from "next/link";
 import style from "../_styles/navigation.module.css";
 import { useRouter } from "next/navigation";
+import { getIdFromLocalStorage } from "@/_utils/localStorageHelper";
 export default function Navigation() {
   const router = useRouter();
 
   const linkToUser = () => {
     if (typeof window !== "undefined") {
-      // Perform localStorage action
-      const id = localStorage.getItem("id");
+      const id = getIdFromLocalStorage("id");
       console.log(id);
-      if (!id) {
+      if (id === null) {
         alert("로그인 후 이용 가능합니다.");
         router.push("/login");
         return;

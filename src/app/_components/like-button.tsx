@@ -6,6 +6,7 @@ import { getFavoriteMovies } from "../_api/get-favorite-movies";
 import style from "../_styles/like-button.module.css";
 import { addFavoriteMovie } from "../_api/add-favorite-movie";
 import { delFavoriteMovie } from "../_api/del-favorite-movie";
+import { getIdFromLocalStorage } from "@/_utils/localStorageHelper";
 
 interface ILikeButtonProps {
   movieID: string;
@@ -15,6 +16,8 @@ interface ILikeButtonProps {
 
 export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps) {
   const [movies, setMovies] = useState([]);
+  const [isLogin, setIsLogin] = useState(false);
+  const [id, setId] = useState<string | null>(null);
   const router = useRouter();
 
   // 영화 찜 목록 불러오기
@@ -24,20 +27,22 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
     setMovies(response);
   };
 
-  // 첫 마운트 되면 로컬스토리지에 있는 id로 찜 목록 불러오기
   useEffect(() => {
-    const id = localStorage.getItem("id");
-    fetchData(id);
+    let id = getIdFromLocalStorage("id");
+    if (id !== null) {
+      setIsLogin(true);
+      setId(id); // id 상태 업데이트
+      fetchData(id); // fetchData 함수 호출
+    }
   }, []);
 
   // 영화가 찜 영화 목록에 있는 지 판단
-  const isMovieIdExist = () => {
+  const isMovieLiked = () => {
     return movies.some((movie: any) => movie.movie_id === movieID);
   };
 
   const onClickBtn = async () => {
-    const id = localStorage.getItem("id");
-    if (!id) {
+    if (!isLogin) {
       alert("로그인 후 이용 가능합니다.");
       router.push("/login");
       return;
@@ -56,14 +61,14 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
     };
 
     // 영화가 이미 찜 목록에 있으면 삭제 api 실행, 아니면 추가 api 실행
-    const response = isMovieIdExist() ? await delFavoriteMovie(unLikeReqData) : await addFavoriteMovie(likeReqData);
+    const response = isMovieLiked() ? await delFavoriteMovie(unLikeReqData) : await addFavoriteMovie(likeReqData);
     console.log(response);
     fetchData(id);
   };
   return (
     <div>
       <button className={style.btn} onClick={onClickBtn}>
-        {isMovieIdExist() ? "❤️" : "🤍"}
+        {isMovieLiked() ? "❤️" : "🤍"}
       </button>
     </div>
   );
