@@ -1,5 +1,5 @@
-import { getMovie } from "@/app/api/get-movie";
-import style from "../../styles/movies/movie-info.module.css";
+import { getMovie } from "@/app/_api/get-movie";
+import style from "../../_styles/movies/movie-info.module.css";
 import Link from "next/link";
 import MovieGenres from "./movie-genres";
 import LikeButton from "../like-button";

@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import style from "../../styles/movies/movie.module.css";
+import style from "../../_styles/movies/movie.module.css";
 import { useRouter } from "next/navigation";
 
 interface IMovieProps {

@@ -1,4 +1,4 @@
-import style from "../../styles/movies/movie-genres.module.css";
+import style from "../../_styles/movies/movie-genres.module.css";
 
 const genreObj: any = {
   28: "액션",

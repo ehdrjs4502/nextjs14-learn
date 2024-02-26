@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import style from "../styles/navigation.module.css";
+import style from "../_styles/navigation.module.css";
 import { useRouter } from "next/navigation";
 export default function Navigation() {
   const router = useRouter();

@@ -1,4 +1,4 @@
-import style from "../../styles/movies/credit.module.css";
+import style from "../../_styles/movies/credit.module.css";
 
 interface ICreditProps {
   name: string;

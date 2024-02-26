@@ -1,6 +1,6 @@
 import { API_URL } from "@/constans";
 import Movie from "../_components/movies/movie";
-import style from "../styles/home.module.css";
+import style from "../_styles/home.module.css";
 
 export const metadata = {
   title: "Home",

@@ -1,5 +1,5 @@
 import { API_URL } from "@/constans";
-import style from "../../styles/movies/movie-credits.module.css";
+import style from "../../_styles/movies/movie-credits.module.css";
 import Credit from "./credit";
 
 async function getCredits(id: string) {

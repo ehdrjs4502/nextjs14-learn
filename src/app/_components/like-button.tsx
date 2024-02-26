@@ -2,10 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getFavoriteMovies } from "../api/get-favorite-movies";
-import style from "../styles/like-button.module.css";
-import { addFavoriteMovie } from "../api/add-favorite-movie";
-import { delFavoriteMovie } from "../api/del-favorite-movie";
+import { getFavoriteMovies } from "../_api/get-favorite-movies";
+import style from "../_styles/like-button.module.css";
+import { addFavoriteMovie } from "../_api/add-favorite-movie";
+import { delFavoriteMovie } from "../_api/del-favorite-movie";
 
 interface ILikeButtonProps {
   movieID: string;

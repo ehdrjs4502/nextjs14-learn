@@ -1,6 +1,6 @@
-import { getFavoriteMovies } from "@/app/api/get-favorite-movies";
+import { getFavoriteMovies } from "@/app/_api/get-favorite-movies";
 import FavoriteMovies from "../../_components/user/favorite-movies";
-import style from "../../styles/user/page.module.css";
+import style from "../../_styles/user/page.module.css";
 
 export default async function User({ params }: any) {
   const movies = await getFavoriteMovies(params.id);
