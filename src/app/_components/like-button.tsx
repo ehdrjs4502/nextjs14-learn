@@ -3,11 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getFavoriteMovies } from "../_api/get-favorite-movies";
-import style from "../_styles/like-button.module.css";
 import { addFavoriteMovie } from "../_api/add-favorite-movie";
 import { delFavoriteMovie } from "../_api/del-favorite-movie";
-import { getIdFromLocalStorage } from "@/_utils/localStorageHelper";
 import useUserInfo from "@/_hooks/useUserInfo";
+import IconButton from "./buttons/icon-button";
 
 interface ILikeButtonProps {
   movieID: string;
@@ -31,14 +30,14 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
     if (userInfo.id !== "") {
       fetchData(userInfo.id); // fetchData 함수 호출
     }
-  }, []);
+  }, [userInfo]);
 
   // 영화가 찜 영화 목록에 있는 지 판단
   const isMovieLiked = () => {
     return movies.some((movie: any) => movie.movie_id === movieID);
   };
 
-  const onClickBtn = async () => {
+  const toggoleLikeStatus = async () => {
     if (userInfo.id === "") {
       alert("로그인 후 이용 가능합니다.");
       router.push("/login");
@@ -64,9 +63,7 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
   };
   return (
     <div>
-      <button className={style.btn} onClick={onClickBtn}>
-        {isMovieLiked() ? "❤️" : "🤍"}
-      </button>
+      <IconButton onClick={toggoleLikeStatus} icon={isMovieLiked() ? "❤️" : "🤍"} />
     </div>
   );
 }
