@@ -6,7 +6,7 @@ import { getFavoriteMovies } from "../_api/get-favorite-movies";
 import { addFavoriteMovie } from "../_api/add-favorite-movie";
 import { delFavoriteMovie } from "../_api/del-favorite-movie";
 import useUserInfo from "@/_hooks/useUserInfo";
-import IconButton from "./buttons/icon-button";
+import IconButton from "./ui/icon-button";
 
 interface ILikeButtonProps {
   movieID: string;
