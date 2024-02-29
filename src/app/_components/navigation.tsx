@@ -1,24 +1,11 @@
-"use client";
 import Link from "next/link";
 import style from "../_styles/navigation.module.css";
-import { useRouter } from "next/navigation";
-import useUserInfo from "@/_hooks/useUserInfo";
-export default function Navigation() {
-  const router = useRouter();
-  const { userInfo, deleteUserInfo } = useUserInfo(); // zustand 라이브러리 사용
-
-  const linkToUser = () => {
-    if (userInfo.id === "") {
-      alert("로그인 후 이용 가능합니다.");
-      router.push("/login");
-    } else {
-      router.push(`/user/${userInfo.id}`);
-    }
-  };
-
-  const handleLogged = () => {
-    userInfo.id === "" ? router.push("/login") : deleteUserInfo();
-  };
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import SignButton from "./signout-button";
+export default async function Navigation() {
+  const user = await getServerSession(authOptions);
+  console.log("nav:", user);
 
   return (
     <nav className={style.nav}>
@@ -27,11 +14,9 @@ export default function Navigation() {
           <Link href="/">Home</Link>
         </li>
         <li>
-          <a onClick={linkToUser}>User</a>
+          <Link href={`/user/${user?.user.sub}`}>{user?.user.sub}</Link>
         </li>
-        <li>
-          <a onClick={handleLogged}>{userInfo.id === "" ? "login" : "logout"}</a>
-        </li>
+        <SignButton user={user} />
       </ul>
     </nav>
   );

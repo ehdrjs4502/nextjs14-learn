@@ -15,9 +15,9 @@ export default function Login() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const res = await signIn("credentials", { id, pw, redirect: false });
-    console.log(res);
     if (res?.ok) {
       router.push("/");
+      router.refresh();
     }
 
     if (res?.status === 401) {

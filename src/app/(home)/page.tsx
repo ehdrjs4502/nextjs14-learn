@@ -17,7 +17,6 @@ async function getMovies() {
 export default async function Home() {
   const movies = await getMovies();
   const user = await getServerSession(authOptions);
-  console.log(user);
   return (
     <div className={style.container}>
       {movies.map((movie: any) => (
