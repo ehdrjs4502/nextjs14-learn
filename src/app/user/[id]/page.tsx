@@ -1,4 +1,4 @@
-import { getFavoriteMovies } from "@/app/_api/get-favorite-movies";
+import { getFavoriteMovies } from "@/app/api/get-favorite-movies";
 import FavoriteMovies from "../../_components/user/favorite-movies";
 import style from "../../_styles/user/page.module.css";
 

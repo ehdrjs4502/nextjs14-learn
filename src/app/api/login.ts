@@ -1,8 +1,8 @@
 import { SERVER_URL } from "@/constans";
 
 interface FormData {
-  id: string;
-  password: string;
+  id: string | undefined;
+  pw: string | undefined;
 }
 
 export async function login(formData: FormData) {

@@ -1,6 +1,8 @@
 import { API_URL } from "@/constans";
 import Movie from "../_components/movies/movie";
 import style from "../_styles/home.module.css";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export const metadata = {
   title: "Home",
@@ -14,6 +16,8 @@ async function getMovies() {
 
 export default async function Home() {
   const movies = await getMovies();
+  const user = await getServerSession(authOptions);
+  console.log(user);
   return (
     <div className={style.container}>
       {movies.map((movie: any) => (
