@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+}
+
+.box {
+    margin: 0 auto;
+    background-color: rgb(74, 74, 74);
+    padding: 32px;
+    border-radius: 24px;
+}
+
+.box h4 {
+    font-weight: 700;
+    margin-top: -12px;
+    margin-bottom: 24px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.box span {
+    font-size: 14px;
+    color: rgb(210, 210, 210);
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.box b {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 700;
+    color: rgb(255, 93, 93);
+}
+
+
+.box input {
+    width: 100%;
+    margin-bottom: 24px;
+    height: 32px;
+}
+
+.btn {
+    text-align: center;
+    width: 103%;
+    height: 32px;
+    border-radius: 12px;
+    background-color: rgb(235, 235, 235);
+}
+
+
+.btn:hover {
+    font-size: 14px;
+    cursor: pointer;
+    background-color: aliceblue;
+}
