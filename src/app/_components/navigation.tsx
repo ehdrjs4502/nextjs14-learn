@@ -5,7 +5,7 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import SignButton from "./signout-button";
 export default async function Navigation() {
   const user = await getServerSession(authOptions);
-  console.log("nav:", user);
+  // console.log("nav:", user);
 
   return (
     <nav className={style.nav}>
@@ -14,7 +14,7 @@ export default async function Navigation() {
           <Link href="/">Home</Link>
         </li>
         <li>
-          <Link href={`/user/${user?.user.sub}`}>{user?.user.sub}</Link>
+          <Link href={`/user/${user?.user.id}`}>{user?.user.id}</Link>
         </li>
         <SignButton user={user} />
       </ul>

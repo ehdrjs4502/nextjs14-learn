@@ -15,10 +15,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <NextAuthProvider />
-        <Navigation />
-        {children}
-        <NextAuthProvider />
+        <NextAuthProvider>
+          <Navigation />
+          {children}
+        </NextAuthProvider>
       </body>
     </html>
   );

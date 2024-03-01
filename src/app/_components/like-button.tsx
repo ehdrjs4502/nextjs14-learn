@@ -7,6 +7,7 @@ import { addFavoriteMovie } from "../api/add-favorite-movie";
 import { delFavoriteMovie } from "../api/del-favorite-movie";
 import useUserInfo from "@/_hooks/useUserInfo";
 import IconButton from "./ui/icon-button";
+import { useSession } from "next-auth/react";
 
 interface ILikeButtonProps {
   movieID: string;
@@ -16,7 +17,8 @@ interface ILikeButtonProps {
 
 export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps) {
   const [movies, setMovies] = useState([]);
-  const { userInfo } = useUserInfo();
+  const { data: session } = useSession();
+  const sessionId = session?.user?.name;
   const router = useRouter();
 
   // 영화 찜 목록 불러오기
@@ -27,10 +29,10 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
   };
 
   useEffect(() => {
-    if (userInfo.id !== "") {
-      fetchData(userInfo.id); // fetchData 함수 호출
+    if (session !== undefined) {
+      fetchData(sessionId); // fetchData 함수 호출
     }
-  }, [userInfo]);
+  }, [session]);
 
   // 영화가 찜 영화 목록에 있는 지 판단
   const isMovieLiked = () => {
@@ -38,28 +40,28 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
   };
 
   const toggoleLikeStatus = async () => {
-    if (userInfo.id === "") {
+    if (session === null) {
       alert("로그인 후 이용 가능합니다.");
       router.push("/login");
       return;
     }
 
     const likeReqData = {
-      userID: userInfo.id,
+      userID: sessionId,
       movieID,
       title,
       postURL,
     };
 
     const unLikeReqData = {
-      userID: userInfo.id,
+      userID: sessionId,
       movieID,
     };
 
     // 영화가 이미 찜 목록에 있으면 삭제 api 실행, 아니면 추가 api 실행
     const response = isMovieLiked() ? await delFavoriteMovie(unLikeReqData) : await addFavoriteMovie(likeReqData);
     console.log(response);
-    fetchData(userInfo.id);
+    fetchData(sessionId);
   };
   return (
     <div>
