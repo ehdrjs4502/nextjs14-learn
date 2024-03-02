@@ -14,7 +14,7 @@ export default async function Navigation() {
           <Link href="/">Home</Link>
         </li>
         <li>
-          <Link href={`/user/${user?.user.id}`}>{user?.user.id}</Link>
+          <Link href={`/user/${user?.user.name}`}>{user?.user.name}</Link>
         </li>
         <SignButton user={user} />
       </ul>
