@@ -2,10 +2,9 @@ import Link from "next/link";
 import style from "../_styles/navigation.module.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
-import SignButton from "./signout-button";
+import SignButton from "./sign-button";
 export default async function Navigation() {
   const user = await getServerSession(authOptions);
-  // console.log("nav:", user);
 
   return (
     <nav className={style.nav}>
@@ -16,7 +15,9 @@ export default async function Navigation() {
         <li>
           <Link href={`/user/${user?.user.name}`}>{user?.user.name}</Link>
         </li>
-        <SignButton user={user} />
+        <li>
+          <SignButton user={user} />
+        </li>
       </ul>
     </nav>
   );

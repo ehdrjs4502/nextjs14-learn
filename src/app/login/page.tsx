@@ -15,7 +15,7 @@ export default function Login() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const res = await signIn("credentials", { id, pw, redirect: false });
+    const res = await signIn("credentials", { id, pw, redirect: false }); // NextAuth의 signIn 함수를 사용하여 로그인 시도
     if (res?.ok) {
       router.push("/");
       router.refresh();

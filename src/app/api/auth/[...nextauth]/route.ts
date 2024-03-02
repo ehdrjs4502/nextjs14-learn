@@ -6,7 +6,7 @@ import { login } from "../../login";
 export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET, // 암호화에 사용될 시크릿 키
   providers: [
-    // CredentialsProvider를 사용하여 사용자 인증 설정
+    // CredentialsProvider를 사용하여 사용자 인증 설정 (id + pw)
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -30,6 +30,11 @@ export const authOptions = {
       },
     }),
   ],
+  // 커스텀 로그인 페이지 사용
+  pages: {
+    signIn: "/login", // 로그인 페이지 경로 설정
+  },
+
   callbacks: {
     // JWT 콜백: 토큰 수정
     async jwt({ token, user }: any) {
@@ -42,10 +47,6 @@ export const authOptions = {
       session.user.name = token.id; // 사용자 이름 추가 (여기서는 ID로 설정)
       return session; // 세션 반환
     },
-  },
-  // 커스텀 로그인 페이지 사용
-  pages: {
-    signIn: "/login", // 로그인 페이지 경로 설정
   },
 };
 
