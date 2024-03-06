@@ -17,6 +17,7 @@ const useFavoriteMovies = create<IFavoriteMovies>()(
       favoriteMovies: [],
       fetch: async (id: any) => {
         const response = await getFavoriteMovies(id);
+        console.log("선호 영화 불러옴");
         set({ favoriteMovies: response });
       },
       delFavoriteMovie: async (data: any) => {

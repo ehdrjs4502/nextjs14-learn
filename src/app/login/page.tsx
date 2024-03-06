@@ -1,17 +1,17 @@
 "use client";
 
-import useUserInfo from "@/_hooks/useFavoriteMovies";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import style from "../_styles/login.module.css";
+import useFavoriteMovies from "@/_hooks/useFavoriteMovies";
 
 export default function Login() {
   const router = useRouter();
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
-  const { setUserInfo } = useUserInfo(); // zustand 라이브러리 사용
   const [isInvalid, setIsInvalid] = useState(false);
+  const { fetch } = useFavoriteMovies();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -19,6 +19,7 @@ export default function Login() {
     if (res?.ok) {
       router.push("/");
       router.refresh();
+      fetch(id);
     }
 
     if (res?.status === 401) {
