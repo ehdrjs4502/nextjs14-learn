@@ -12,9 +12,7 @@ export default async function Navigation() {
         <li>
           <Link href="/">Home</Link>
         </li>
-        <li>
-          <Link href={`/user/${user?.user.name}`}>{user?.user.name}</Link>
-        </li>
+        <li>{user && <Link href="/user/favorites">{user?.user.name}</Link>}</li>
         <li>
           <SignButton user={user} />
         </li>

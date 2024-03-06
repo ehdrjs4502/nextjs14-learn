@@ -1,6 +1,6 @@
 "use client";
 
-import useUserInfo from "@/_hooks/useUserInfo";
+import useUserInfo from "@/_hooks/useFavoriteMovies";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
