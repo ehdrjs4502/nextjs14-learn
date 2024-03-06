@@ -17,12 +17,8 @@ interface ILikeButtonProps {
 export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps) {
   const { data: session } = useSession();
   const sessionId = session?.user?.name;
-  const { favoriteMovies, fetch, delFavoriteMovie, addFavoriteMovie } = useFavoriteMovies();
+  const { favoriteMovies, delFavoriteMovie, addFavoriteMovie } = useFavoriteMovies();
   const router = useRouter();
-
-  useEffect(() => {
-    if (session) fetch(sessionId);
-  }, [sessionId]);
 
   // 영화가 찜 영화 목록에 있는 지 판단
   const isMovieLiked = () => {
