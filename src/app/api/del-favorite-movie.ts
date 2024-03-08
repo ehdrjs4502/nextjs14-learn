@@ -12,6 +12,6 @@ export const delFavoriteMovie = async (data: any) => {
     body: JSON.stringify(data),
   });
   // revalidateTag("favorites");
-  revalidatePath("/user/[id]", "page"); // 해당 경로에 data를 업데이트
+  // revalidatePath("/user/[id]", "page"); // 해당 경로에 data를 업데이트
   return response.json();
 };

@@ -25,10 +25,6 @@ export default function LikeButton({ movieID, title, postURL }: ILikeButtonProps
     return favoriteMovies.some((movie: any) => movie.movie_id === movieID);
   };
 
-  useEffect(() => {
-    isMovieLiked();
-  }, [favoriteMovies]);
-
   const toggoleLikeStatus = () => {
     if (session === null) {
       alert("로그인 후 이용 가능합니다.");

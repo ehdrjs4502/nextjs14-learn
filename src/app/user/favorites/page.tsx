@@ -16,7 +16,7 @@ export default function User() {
 
   return (
     <div className={style.container}>
-      <h4>찜한 영화 목록</h4>
+      <h4>선호 영화 목록</h4>
       <FavoriteMovies movies={favoriteMovies} />
     </div>
   );
