@@ -1,6 +1,15 @@
 import style from "../../_styles/movies/movie-genres.module.css";
 
-const genreObj: any = {
+interface Genre {
+  id: number;
+  name: string;
+}
+
+interface IProps {
+  genres: Genre[];
+}
+
+const genreObj: Record<number, string> = {
   28: "액션",
   12: "모험",
   16: "애니메이션",
@@ -22,11 +31,11 @@ const genreObj: any = {
   37: "서부",
 };
 
-export default function MovieGenres({ genres }: { genres: any }) {
+export default function MovieGenres({ genres }: IProps) {
   return (
     <div className={style.container}>
       <h4>장르</h4>
-      {genres.map((genre: any) => (
+      {genres.map((genre) => (
         <span key={genre.id}>{genreObj[genre.id]}</span>
       ))}
     </div>
