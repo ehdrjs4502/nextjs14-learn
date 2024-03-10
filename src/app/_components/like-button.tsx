@@ -1,12 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { addFavoriteMovie } from "../api/add-favorite-movie";
-import { delFavoriteMovie } from "../api/del-favorite-movie";
 import IconButton from "./ui/icon-button";
 import { useSession } from "next-auth/react";
 import useFavoriteMovies from "@/_hooks/useFavoriteMovies";
-import { useEffect } from "react";
 
 interface ILikeButtonProps {
   movieID: string;
